@@ -1,30 +1,38 @@
 /* Custom styles to complement Bootstrap dark theme */
 
+/* Form animations */
+.form-floating {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 0.5s ease forwards;
+}
+
+.form-floating:nth-child(2) { animation-delay: 0.1s; }
+.form-floating:nth-child(3) { animation-delay: 0.2s; }
+.form-floating:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 /* Card hover effect */
 .card {
-    transition: transform 0.2s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Custom badge colors */
-.badge.bg-planned {
-    background-color: var(--bs-info);
-}
-
-.badge.bg-ongoing {
-    background-color: var(--bs-warning);
-}
-
-.badge.bg-completed {
-    background-color: var(--bs-success);
-}
-
-.badge.bg-delayed {
-    background-color: var(--bs-danger);
-}
+.badge.bg-planned { background-color: var(--bs-info); }
+.badge.bg-ongoing { background-color: var(--bs-warning); }
+.badge.bg-completed { background-color: var(--bs-success); }
+.badge.bg-delayed { background-color: var(--bs-danger); }
 
 /* Dashboard stats cards */
 .card-body h2 {
@@ -32,12 +40,123 @@
     font-weight: bold;
     margin: 0;
     color: var(--bs-primary);
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
 }
 
 /* Form styling */
 .form-control:focus, .form-select:focus {
     border-color: var(--bs-primary);
     box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+    transition: all 0.3s ease;
+}
+
+/* Button animations */
+.btn {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(var(--bs-primary-rgb), 0.2);
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:active::after {
+    width: 200%;
+    height: 200%;
+}
+
+/* Alert animations */
+.alert {
+    animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Icon animations */
+[data-feather] {
+    stroke-width: 1.5;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover [data-feather] {
+    transform: scale(1.1);
+}
+
+/* Loading spinner */
+.spinner-border {
+    color: var(--bs-primary);
+}
+
+/* Page transition effects */
+.fade-enter {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Form validation feedback animation */
+.invalid-feedback {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Success check animation */
+.success-checkmark {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    animation: checkmark 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes checkmark {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 /* Table responsive scrolling */
@@ -56,10 +175,6 @@ canvas {
     margin-right: 0.5rem;
 }
 
-/* Loading spinner */
-.spinner-border {
-    color: var(--bs-primary);
-}
 
 /* Button hover states */
 .btn-primary:hover {
