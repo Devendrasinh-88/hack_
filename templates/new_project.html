@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h1>New Project</h1>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form method="POST" action="{{ url_for('new_project') }}">
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.name.label(class="form-label") }}
+                    {{ form.name(class="form-control") }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.project_type.label(class="form-label") }}
+                    {{ form.project_type(class="form-select") }}
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.village_code.label(class="form-label") }}
+                    {{ form.village_code(class="form-control") }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.contractor.label(class="form-label") }}
+                    {{ form.contractor(class="form-control") }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.start_date.label(class="form-label") }}
+                    {{ form.start_date(class="form-control") }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.end_date.label(class="form-label") }}
+                    {{ form.end_date(class="form-control") }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.status.label(class="form-label") }}
+                    {{ form.status(class="form-select") }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form.cost.label(class="form-label") }}
+                    {{ form.cost(class="form-control") }}
+                </div>
+            </div>
+
+            <div class="mb-3">
+                {{ form.location.label(class="form-label") }}
+                {{ form.location(class="form-control") }}
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="{{ url_for('projects') }}" class="btn btn-secondary me-md-2">Cancel</a>
+                <button type="submit" class="btn btn-primary">Create Project</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

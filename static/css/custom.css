@@ -1,0 +1,68 @@
+/* Custom styles to complement Bootstrap dark theme */
+
+/* Card hover effect */
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Custom badge colors */
+.badge.bg-planned {
+    background-color: var(--bs-info);
+}
+
+.badge.bg-ongoing {
+    background-color: var(--bs-warning);
+}
+
+.badge.bg-completed {
+    background-color: var(--bs-success);
+}
+
+.badge.bg-delayed {
+    background-color: var(--bs-danger);
+}
+
+/* Dashboard stats cards */
+.card-body h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: var(--bs-primary);
+}
+
+/* Form styling */
+.form-control:focus, .form-select:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+/* Table responsive scrolling */
+.table-responsive {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/* Chart containers */
+canvas {
+    max-height: 400px;
+}
+
+/* Navbar brand icon */
+.navbar-brand i {
+    margin-right: 0.5rem;
+}
+
+/* Loading spinner */
+.spinner-border {
+    color: var(--bs-primary);
+}
+
+/* Button hover states */
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(var(--bs-primary-rgb), 0.2);
+}
