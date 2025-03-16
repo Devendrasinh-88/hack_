@@ -11,13 +11,24 @@
                     <div class="mb-3">
                         {{ form.username.label(class="form-label") }}
                         {{ form.username(class="form-control") }}
+                        {% if form.username.errors %}
+                            {% for error in form.username.errors %}
+                                <div class="invalid-feedback d-block">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                     <div class="mb-3">
                         {{ form.password.label(class="form-label") }}
                         {{ form.password(class="form-control") }}
+                        {% if form.password.errors %}
+                            {% for error in form.password.errors %}
+                                <div class="invalid-feedback d-block">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
-                    <div class="d-grid">
+                    <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-primary">Login</button>
+                        <a href="{{ url_for('register') }}" class="btn btn-outline-secondary">Need an account? Register</a>
                     </div>
                 </form>
             </div>
